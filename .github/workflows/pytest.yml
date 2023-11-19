@@ -1,4 +1,4 @@
-name: Pytest 🐍 
+name: Python 🐍
 on: [push, pull_request]
 jobs:
   pytest:
@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Build Clima
+      - name: Install dependencies
         run: |-
           pip install pipenv
           pipenv install --dev
@@ -20,3 +20,27 @@ jobs:
       - name: Test Clima
         run: |-
           pipenv run python -m pytest
+
+  # TODO: Currently 11 files need reformatting.
+  #       (mostly just whitespace)
+  #       I already have enough changes for one PR,
+  #       so save reformatting for the next.
+  # black:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup Python
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: '3.10'
+
+  #     - name: Install dependencies
+  #       run: |-
+  #         pip install pipenv
+  #         pipenv install --dev
+
+  #     - name: Confirm Black format
+  #       run: |-
+  #         pipenv run black --check .
