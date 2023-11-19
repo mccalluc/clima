@@ -17,6 +17,7 @@ dash-mantine-components = "*"
 cleanpy = "*"
 pytest = "*"
 bump2version = "*"
+black = "*"
 
 [requires]
 python_version = "3.10"
