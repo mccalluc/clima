@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d0cd40ccb11fdfd03e81a6676a152888476fe905973650f5de8fdd8ce8296cf9"
+            "sha256": "a600786343d787f10ca47283631c81e48a2859530b205f7cc74e874dc05780a4"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -588,12 +588,12 @@
         },
         "pvlib": {
             "hashes": [
-                "sha256:ead96f47898befd7728ab0b61b9747231008e151ef78a26d5e41d0b6a95a3a9d",
-                "sha256:f03b63e2d2fca13d5ca4c69010929dca5046e935da943d2dd1806e265aa44e93"
+                "sha256:8023853f685e02dce97b7f23d658cecf5c91d4ff29459d1e20b54af0a777b457",
+                "sha256:c5795cea7b410448abedf1db1f0b69da65f277cc9d23de9f427c5ff7727e9aea"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.6'",
-            "version": "==0.9.1"
+            "markers": "python_version >= '3.7'",
+            "version": "==0.10.2"
         },
         "pythermalcomfort": {
             "hashes": [

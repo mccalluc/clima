@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 dash = "==2.4.1"
-pvlib = "==0.9.1"
+pvlib = "*"
 pythermalcomfort = "*"
 dash-bootstrap-components = "*"
 dash-extensions = "*"
