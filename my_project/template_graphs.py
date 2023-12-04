@@ -101,7 +101,7 @@ def yearly_profile(df, var, global_local, si_ip):
     var_single_color = var_color[len(var_color) // 2]
     custom_ylim = range_y
     # Get min, max, and mean of each day
-    dbt_day = df.groupby(np.arange(len(df.index)) // 24)[var].agg(
+    dbt_day = df.groupby(np.arange(len(df.index)) // 24, observed=False)[var].agg(
         ["min", "max", "mean"]
     )
 
@@ -147,9 +147,9 @@ def yearly_profile(df, var, global_local, si_ip):
 
     if var == "DBT":
         # plot ashrae adaptive comfort limits (80%)
-        lo80 = df.groupby("DOY")["adaptive_cmf_80_low"].mean().values
-        hi80 = df.groupby("DOY")["adaptive_cmf_80_up"].mean().values
-        rmt = df.groupby("DOY")["adaptive_cmf_rmt"].mean().values
+        lo80 = df.groupby("DOY", observed=False)["adaptive_cmf_80_low"].mean().values
+        hi80 = df.groupby("DOY", observed=False)["adaptive_cmf_80_up"].mean().values
+        rmt = df.groupby("DOY", observed=False)["adaptive_cmf_rmt"].mean().values
         # set color https://github.com/CenterForTheBuiltEnvironment/clima/issues/113 implementation
         var_bar_colors = np.where((rmt > 40) | (rmt < 10), "lightgray", "darkgray")
 
@@ -166,8 +166,8 @@ def yearly_profile(df, var, global_local, si_ip):
         )
 
         # plot ashrae adaptive comfort limits (90%)
-        lo90 = df.groupby("DOY")["adaptive_cmf_90_low"].mean().values
-        hi90 = df.groupby("DOY")["adaptive_cmf_90_up"].mean().values
+        lo90 = df.groupby("DOY", observed=False)["adaptive_cmf_90_low"].mean().values
+        hi90 = df.groupby("DOY", observed=False)["adaptive_cmf_90_up"].mean().values
 
         trace4 = go.Bar(
             x=df["UTC_time"].dt.date.unique(),
@@ -251,7 +251,9 @@ def daily_profile(df, var, global_local, si_ip):
         range_y = [data_min, data_max]
 
     var_single_color = var_color[len(var_color) // 2]
-    var_month_ave = df.groupby(["month", "hour"])[var].median().reset_index()
+    var_month_ave = (
+        df.groupby(["month", "hour"], observed=False)[var].median().reset_index()
+    )
     fig = make_subplots(
         rows=1,
         cols=12,
@@ -508,13 +510,13 @@ def wind_rose(df, title, month, hour, labels, si_ip):
             )
         )
         .replace({"WindDir_bins": {360: 0}})
-        .groupby(by=["WindSpd_bins", "WindDir_bins"])
+        .groupby(by=["WindSpd_bins", "WindDir_bins"], observed=False)
         .size()
         .unstack(level="WindSpd_bins")
         .fillna(0)
         .assign(calm=lambda df: calm_count / df.shape[0])
         .sort_index(axis=1)
-        .applymap(lambda x: x / total_count * 100)
+        .map(lambda x: x / total_count * 100)
     )
     fig = go.Figure()
     for i, col in enumerate(rose.columns):
@@ -625,12 +627,20 @@ def thermal_stress_stacked_barchart(
     isNormalized = True if len(normalize) != 0 else False
     if isNormalized:
         new_df = (
-            df.groupby("month")[var].value_counts(normalize=True).unstack(var).fillna(0)
+            df.groupby("month", observed=False)[var]
+            .value_counts(normalize=True)
+            .unstack(var)
+            .fillna(0)
         )
         new_df.set_axis(categories, axis=1, copy=False)
         new_df.reset_index(inplace=True)
     else:
-        new_df = df.groupby("month")[var].value_counts().unstack(var).fillna(0)
+        new_df = (
+            df.groupby("month", observed=False)[var]
+            .value_counts()
+            .unstack(var)
+            .fillna(0)
+        )
         new_df.set_axis(categories, axis=1, copy=False)
         new_df.reset_index(inplace=True)
 

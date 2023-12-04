@@ -314,7 +314,7 @@ def title_with_link(
 
 def summary_table_tmp_rh_tab(df, value, si_ip):
     df_summary = (
-        df.groupby(["month_names", "month"])[value]
+        df.groupby(["month_names", "month"], observed=False)[value]
         .describe(percentiles=[0.01, 0.25, 0.5, 0.75, 0.99])
         .round(2)
     )

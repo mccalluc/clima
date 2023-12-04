@@ -170,7 +170,9 @@ def create_df(lst, file_name):
     ].astype(int)
 
     # Add in DOY
-    df_doy = epw_df.groupby(["month", "day"])["hour"].count().reset_index()
+    df_doy = (
+        epw_df.groupby(["month", "day"], observed=False)["hour"].count().reset_index()
+    )
     df_doy["DOY"] = df_doy.index + 1
     epw_df = pd.merge(
         epw_df, df_doy[["month", "day", "DOY"]], on=["month", "day"], how="left"
@@ -297,7 +299,7 @@ def create_df(lst, file_name):
     epw_df = epw_df.join(psy_df)
 
     # calculate adaptive data
-    dbt_day_ave = epw_df.groupby(["DOY"])["DBT"].mean().to_list()
+    dbt_day_ave = epw_df.groupby(["DOY"], observed=False)["DBT"].mean().to_list()
     n = 7
     epw_df["adaptive_comfort"] = np.nan
     epw_df["adaptive_cmf_80_low"] = np.nan

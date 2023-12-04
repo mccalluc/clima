@@ -18,10 +18,14 @@ from pvlib import solarposition
 
 def monthly_solar(epw_df, si_ip):
     g_h_rad_month_ave = (
-        epw_df.groupby(["month", "hour"])["glob_hor_rad"].median().reset_index()
+        epw_df.groupby(["month", "hour"], observed=False)["glob_hor_rad"]
+        .median()
+        .reset_index()
     )
     dif_h_rad_month_ave = (
-        epw_df.groupby(["month", "hour"])["dif_hor_rad"].median().reset_index()
+        epw_df.groupby(["month", "hour"], observed=False)["dif_hor_rad"]
+        .median()
+        .reset_index()
     )
     fig = make_subplots(
         rows=1,

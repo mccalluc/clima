@@ -16,6 +16,7 @@ dash-mantine-components = "*"
 # which is removed after Flask 2.2.5:
 #   https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-0
 # This is fixed in recent releases of Dash,
+#   https://github.com/plotly/dash/issues/2177
 # so once Dash is updated, we can remove Flask as explicit dependency.
 flask = "2.2.5"
 

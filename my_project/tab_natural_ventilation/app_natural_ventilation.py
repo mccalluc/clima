@@ -488,7 +488,9 @@ def nv_bar_chart(
     )
 
     # this should be the total after filtering by time
-    tot_month_hours = df.groupby(df["UTC_time"].dt.month)["nv_allowed"].sum().values
+    tot_month_hours = (
+        df.groupby(df["UTC_time"].dt.month, observed=False)["nv_allowed"].sum().values
+    )
 
     if dbt_data_filter and (min_dbt_val <= max_dbt_val):
         df.loc[(df[var] < min_dbt_val) | (df[var] > max_dbt_val), "nv_allowed"] = 0
@@ -498,7 +500,7 @@ def nv_bar_chart(
 
     n_hours_nv_allowed = (
         df.dropna(subset="nv_allowed")
-        .groupby(df["UTC_time"].dt.month)["nv_allowed"]
+        .groupby(df["UTC_time"].dt.month, observed=False)["nv_allowed"]
         .sum()
         .values
     )
