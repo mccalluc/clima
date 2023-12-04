@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-dash = "==2.4.1"
+dash = "==2.5.0"
 pvlib = "*"
 pythermalcomfort = "*"
 dash-bootstrap-components = "*"

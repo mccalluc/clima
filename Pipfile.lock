@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a600786343d787f10ca47283631c81e48a2859530b205f7cc74e874dc05780a4"
+            "sha256": "5d2fbf09d11038ac807dc4186b4522bd4e4eac3b733c685568173bb88fe34d45"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -219,12 +219,12 @@
         },
         "dash": {
             "hashes": [
-                "sha256:44ad5593d69f8aba37e4dd8fa07b1e5dfc012aebd8cccf6e4f68591bca02d177",
-                "sha256:aef5fdbb2e948a378c1c8175d52a76c59cf998c62b25eaff616cd947310b04d3"
+                "sha256:816e78b6d41c04076e83b4858348d164e380eb6fa50e6770d51c7ac9a4b20879",
+                "sha256:aaec03c6944b73873e1651989d5f32482735b18862b95fe727dff13b6b5028e4"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.6'",
-            "version": "==2.4.1"
+            "version": "==2.5.0"
         },
         "dash-bootstrap-components": {
             "hashes": [
