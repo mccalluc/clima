@@ -4,7 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-dash = "==2.5.0"
+# Dash 2.7.0 is the next release after 2.6.2, and it produces this error:
+# > In the callback for output(s):
+# >   tabs-content.children
+# > Output 0 (tabs-content.children) is already in use.
+# > Any given output can only have one callback that sets it.
+# > To resolve this situation, try combining these into
+# > one callback function, distinguishing the trigger
+# > by using `dash.callback_context` if necessary.
+dash = "2.5.0"
 pvlib = "*"
 pythermalcomfort = "*"
 dash-bootstrap-components = "*"
@@ -12,12 +20,13 @@ dash-extensions = "*"
 flask-caching = "==1.10.1"
 dash-mantine-components = "*"
 
-# Dash 2.4.1 uses `before_first_request`,
+# Dash 2.6.2 and earlier use `before_first_request`,
 # which is removed after Flask 2.2.5:
 #   https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-0
 # This is fixed in recent releases of Dash,
 #   https://github.com/plotly/dash/issues/2177
-# so once Dash is updated, we can remove Flask as explicit dependency.
+# (fixed in dev Oct 19, 2022, not sure of exact version)
+# ... so once Dash is updated, we can remove Flask as explicit dependency.
 flask = "2.2.5"
 
 [dev-packages]
