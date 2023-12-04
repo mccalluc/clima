@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5e96f65bbbebae3db96f9c9e7ef18660762875767d4576b273835a8505b2e629"
+            "sha256": "d0cd40ccb11fdfd03e81a6676a152888476fe905973650f5de8fdd8ce8296cf9"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,14 +16,6 @@
         ]
     },
     "default": {
-        "blinker": {
-            "hashes": [
-                "sha256:c3f865d4d54db7abc53758a01601cf343fe55b84c1de4e3fa910e420b438d5b9",
-                "sha256:e6820ff6fa4e4d1d8e2747c2283749c3f547e4fee112b98555cdcdae32996182"
-            ],
-            "markers": "python_version >= '3.8'",
-            "version": "==1.7.0"
-        },
         "brotli": {
             "hashes": [
                 "sha256:03d20af184290887bdea3f0f78c4f737d126c74dc2f3ccadf07e54ceca3bf208",
@@ -236,12 +228,12 @@
         },
         "dash-bootstrap-components": {
             "hashes": [
-                "sha256:4f95470952ecb9a0f2dbef34be2969353c5c16925817d48da50db51ade80f50f",
-                "sha256:d7fd69cb2b1e86f9cc4bcee4036302e5d534d0bf102d331b29392a3c355d776a"
+                "sha256:083158c07434b9965e2d6c3e8ca72dbbe47dab23e676258cef9bf0ad47d2e250",
+                "sha256:b487fec1a85e3d6a8564fe04c0a9cd9e846f75ea9e563456ed3879592889c591"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.6' and python_version < '4'",
-            "version": "==1.2.0"
+            "markers": "python_version >= '3.7' and python_version < '4'",
+            "version": "==1.5.0"
         },
         "dash-core-components": {
             "hashes": [
@@ -290,11 +282,12 @@
         },
         "flask": {
             "hashes": [
-                "sha256:21128f47e4e3b9d597a3e8521a329bf56909b690fcc3fa3e477725aa81367638",
-                "sha256:cfadcdb638b609361d29ec22360d6070a77d7463dcb3ab08d2c2f2f168845f58"
+                "sha256:58107ed83443e86067e41eff4631b058178191a355886f8e479e347fa1285fdf",
+                "sha256:edee9b0a7ff26621bd5a8c10ff484ae28737a2410d99b0bb9a6850c7fb977aa0"
             ],
-            "markers": "python_version >= '3.8'",
-            "version": "==3.0.0"
+            "index": "pypi",
+            "markers": "python_version >= '3.7'",
+            "version": "==2.2.5"
         },
         "flask-caching": {
             "hashes": [

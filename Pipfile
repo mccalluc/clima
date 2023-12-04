@@ -7,10 +7,17 @@ name = "pypi"
 dash = "==2.4.1"
 pvlib = "==0.9.1"
 pythermalcomfort = "*"
-dash-bootstrap-components = "==1.2.0"
+dash-bootstrap-components = "*"
 dash-extensions = "*"
 flask-caching = "==1.10.1"
 dash-mantine-components = "*"
+
+# Dash 2.4.1 uses `before_first_request`,
+# which is removed after Flask 2.2.5:
+#   https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-0
+# This is fixed in recent releases of Dash,
+# so once Dash is updated, we can remove Flask as explicit dependency.
+flask = "2.2.5"
 
 [dev-packages]
 cleanpy = "*"
